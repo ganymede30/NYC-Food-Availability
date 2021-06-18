@@ -28,11 +28,11 @@ const Map = () => {
   const [profile, setProfile] = useState('walking')
   const [minutes, setMinutes] = useState(10)
   const [buroughs, setBuroughs] = useState([
-    'Bronx',
-    'Brooklyn',
-    'Manhattan',
-    'Queens',
-    'StatenIsland'
+    'https://data.ny.gov/resource/9a8c-vfzj.json?county=Bronx',
+    'https://data.ny.gov/resource/9a8c-vfzj.json?county=Kings',
+    'https://data.ny.gov/resource/9a8c-vfzj.json?county=New%20York',
+    'https://data.ny.gov/resource/9a8c-vfzj.json?county=Queens',
+    'https://data.ny.gov/resource/9a8c-vfzj.json?county=Richmond'
   ])
 
   const mapRef = useRef()
@@ -99,12 +99,43 @@ const Map = () => {
           features: []
         }
         for (let i = 0; i < buroughs.length; i++) {
-          let fetcher = await axios.get(`/api/grocers/${buroughs[i]}`)
-          geojson.features.push(...fetcher.data.features)
+
+          const {data} = await axios.get(buroughs[i])
+          const grocers = {
+            type: 'FeatureCollection',
+            features: data
+              .filter(
+                grocer =>
+                  grocer.location !== undefined &&
+                  grocer.location.latitude !== undefined &&
+                  grocer.location.longitude !== undefined
+              )
+              .map((grocer, index) => ({
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [
+                    parseFloat(grocer.location.longitude),
+                    parseFloat(grocer.location.latitude)
+                  ]
+                },
+                properties: {
+                  id: index + 1,
+                  name: grocer.dba_name,
+                  address: grocer.location.human_address,
+                  street_number: grocer.street_number,
+                  street_name: grocer.street_name,
+                  city: grocer.city,
+                  county: grocer.county,
+                  state: grocer.state
+                }
+              }))
+          }
+          geojson.features.push(...grocers.features)
         }
         setGrocers(geojson)
       } catch (error) {
-        console.error(error.message)
+          console.error(error.message)
       }
     }
     grabData()
