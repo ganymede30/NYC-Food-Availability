@@ -64,4 +64,4 @@ Grocery store data is collected from the NY Department of Agriculture and Market
 
 ## License
 
-**MIT License** Copyright © _2018 Fullstack Academy_
+Create React App is open source software [licensed as MIT](https://github.com/facebook/create-react-app/blob/master/LICENSE). The Create React App logo is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
