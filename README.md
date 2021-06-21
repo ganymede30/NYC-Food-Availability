@@ -2,7 +2,13 @@
 
 ## Motivation
 
-Food Desert is a personal project of mine I've been thinking about a while. I wanted to map food security in New York City. I saw that [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/) had an [Isochrone feature](https://docs.mapbox.com/help/tutorials/get-started-isochrone-api/) and I figured this would be a great way to map how grocery store accessibility. This was also an excuse to familiarize myself with [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+NYC Food Availability is a personal project of. I wanted to map food security in New York City. I saw that [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/) had an [Isochrone feature](https://docs.mapbox.com/help/tutorials/get-started-isochrone-api/) and I figured this would be a great way to map grocery store accessibility. This was also an excuse to familiarize myself with [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+
+## Local Setup
+
+1.  Fork and clone this repo
+2.  Run `npm install`
+3.  Run `npm run start` and head over to http://localhost:3000/
 
 ## Tech Stack
 
@@ -30,12 +36,6 @@ In the top left corner you can search any address or place of interest.
 Hovering your mouse over any of the green points displays the name of the grocery store.
 
 ![](public/GrocerHover.gif)
-
-## Local Setup
-
-1.  Fork and clone this repo
-2.  Run `npx install`
-3.  Run `npm run start` and head over to http://localhost:3000/
 
 ## Contribute
 

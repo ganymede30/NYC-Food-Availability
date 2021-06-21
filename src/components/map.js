@@ -4,7 +4,9 @@ import Geocoder from 'react-map-gl-geocoder'
 import {pointStyles, isochroneStyles} from '../styles/mapStyles'
 import axios from 'axios'
 
-const accessToken = process.env.REACT_APP_MAPBOX_API_KEY
+// const accessToken = process.env.REACT_APP_MAPBOX_API_KEY
+const accessToken = 'pk.eyJ1IjoiZ2FueW1lZGUzMCIsImEiOiJjazV3b20zMWsxeDRnM3Jtam1iaTQ1N2kzIn0.oOGhQyN93k3NzPoEC56iIw'
+
 
 const urlBase = 'https://api.mapbox.com/isochrone/v1/mapbox/'
 
